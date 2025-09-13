@@ -1,6 +1,6 @@
 /*
- * Firmware MK2 adapted for MK1
  * charybdis_left.overlay
+ * Firmware MK2 adapted for MK1
  */
 
 #include "charybdis.dtsi"
@@ -19,10 +19,9 @@
     >;
 };
 
+/* Оставляем слушатель трекбола, но без переопределения GPIO */
 &pmw_listener {
     status = "okay";
-
-    /* Глобальные трансформации MK2 */
     input-processors = <
         &zip_temp_layer 2 1000
     >;
