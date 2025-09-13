@@ -3,46 +3,38 @@
  *
  * SPDX-License-Identifier: MIT
  */
-
 #include "charybdis.dtsi"
-
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
-
 &kscan0 {
-	col-gpios = <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-		    , <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-		    , <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-		    , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-		    , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-		    , <&pro_micro 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+    col-gpios
+        = <&gpio0 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        ;
 };
-
 &pmw_listener {
 	status = "okay";
-
 	// Глобальные трансформации (исключена инверсия осей)
 	input-processors = <
 		// &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
 		&zip_temp_layer 2 1000
 	>;
-
 	// Режим скролла
 	scroller {
 		layers = <3>;
-
-		
 		input-processors = <
-			&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT) // Скролл для инверсии оси Y
-			&zip_xy_scaler 1 1 // Было 1 10, снижали до 1 1 - для замедления скролла
+			&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)
+			&zip_xy_scaler 1 1
 			&zip_xy_to_scroll_mapper
 		>;
 	};
-
 	// Sniper режим — исключена компенсационная инверсия
 	snipe {
 		layers = <4>;
-
 		input-processors = <
 			// &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
 			&zip_xy_scaler 1 3
