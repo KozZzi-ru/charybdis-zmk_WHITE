@@ -1,12 +1,12 @@
 /*
- * Firmware MK2 adapted for MK1
  * charybdis_right.overlay
+ * Firmware MK2 adapted for MK1
  */
 
 #include "charybdis.dtsi"
 
+/* Сдвиг правой половины под разводку MK1 */
 &matrix_transform0 {
-    /* Сдвиг правой половины под разводку MK1 */
     col-offset = <5>;
 };
 
@@ -44,7 +44,8 @@
     };
 };
 
-nice_view_spi: &spi2 {
+/* Трекбол MK2, переиспользуем SPI2, меняем только GPIO */
+&spi2 {
     status = "okay";
     compatible = "nordic,nrf-spim";
     pinctrl-0 = <&spi2_default>;
