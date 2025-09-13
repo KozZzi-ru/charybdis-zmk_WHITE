@@ -1,6 +1,7 @@
 /*
- * charybdis_left.overlay
- * Firmware MK2 adapted for MK1
+ * Copyright (c) 2020 ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
  */
 
 #include "charybdis.dtsi"
@@ -8,37 +9,36 @@
 #include <dt-bindings/zmk/input_transform.h>
 
 &kscan0 {
-    /* Колонки MK1 */
-    col-gpios = <
-        &gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN),
-        &gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN),
-        &gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN),
-        &gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN),
-        &gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN),
-        &gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
-    >;
+    col-gpios
+        = <&gpio0 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        ;
 };
 
-/* Оставляем слушатель трекбола активным */
 &pmw_listener {
     status = "okay";
 
-    /* Глобальные трансформации MK2 */
     input-processors = <
         &zip_temp_layer 2 1000
     >;
 
     scroller {
         layers = <3>;
+        
         input-processors = <
-            &zip_xy_transform (INPUT_TRANSFORM_Y_INVERT),
-            &zip_xy_scaler 1 1,
+            &zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)
+            &zip_xy_scaler 1 1
             &zip_xy_to_scroll_mapper
         >;
     };
 
     snipe {
         layers = <4>;
+
         input-processors = <
             &zip_xy_scaler 1 3
         >;
