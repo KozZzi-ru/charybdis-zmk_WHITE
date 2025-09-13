@@ -21,15 +21,15 @@
 
         /* Строки MK1 */
         row-gpios = <
-            &gpio0 31 GPIO_ACTIVE_HIGH,  /* Row 0 */
-            &gpio1 15 GPIO_ACTIVE_HIGH,  /* Row 1 */
-            &gpio0 24 GPIO_ACTIVE_HIGH,  /* Row 2 */
-            &gpio0 22 GPIO_ACTIVE_HIGH,  /* Row 3 */
-            &gpio1 6  GPIO_ACTIVE_HIGH   /* Row 4 */
+            &gpio0 31 GPIO_ACTIVE_HIGH,
+            &gpio1 15 GPIO_ACTIVE_HIGH,
+            &gpio0 24 GPIO_ACTIVE_HIGH,
+            &gpio0 22 GPIO_ACTIVE_HIGH,
+            &gpio1 6  GPIO_ACTIVE_HIGH
         >;
     };
 
-    /* Трансформации MK2 без изменений */
+    /* Матрицы MK2 без изменений */
     matrix_transform0: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <12>;
