@@ -1,6 +1,6 @@
 /*
- * Firmware MK2 adapted for MK1
  * charybdis.dtsi
+ * Firmware MK2 adapted for MK1
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
@@ -28,7 +28,7 @@
         >;
     };
 
-    /* Оставляем MK2 матричные трансформации без изменений */
+    /* Матрицы MK2 без изменений */
     matrix_transform0: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <12>;
